@@ -2,6 +2,7 @@
     "name": "veainge/aedificator",
     "description": "build resources from database tables",
     "type": "project",
+    "license": "GNU",
     "autoload": {
         "psr-4": {
             "Veainge\\Aedificator\\": "src/"
@@ -10,19 +11,6 @@
             "src/AedificatorServiceProvider"
         ]
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.x-dev"
-        },
-        "laravel": {
-            "providers": [
-                "Veainge\\Aedificator\\AedificatorServiceProvider"
-            ]
-        }
-    },
-    "config": {
-        "sort-packages": true
-    },
     "authors": [
         {
             "name": "Abelardo Recalde",
@@ -30,15 +18,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": ">=7.2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "ext-exif": "*",
-        "ext-fileinfo": "*",
-        "illuminate/console": "^10.17",
-        "illuminate/filesystem": "^10.17",
-        "illuminate/support": "^10.17",
-        "illuminate/validation": "^10.17"
+        "laravel/framework": "^8.75",
+        "laravel/sanctum": "^2.11"
     }
 }
