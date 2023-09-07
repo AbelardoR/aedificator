@@ -3,6 +3,12 @@
     "description": "build resources from database tables",
     "type": "project",
     "license": "GNU3",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/AbelardoR/aedificator/"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Veainge\\Aedificator\\": "src/"
