@@ -44,14 +44,14 @@ php artisan forge:table table_name `OPTION`
 ```
 - `table_name` : "Type the name of the table" *Required
 - `--folder=Dashboard` : "placed in a certain folder helps keep you organized"
-- `--M|model` : "only create the model based on the table"
-- `--C|controller` : "only create controller based on table"
-- `--R|request` : "only create request based on table"
-- `--NV|noviews` : "create a model, controller, request and routes"
-- `--VW|views` : "only create a views based on table"
-- `--L|lang=en` : "create files to be translated"
-- `--CM|components` : "copy necessary components"
-- `--NAV|navigation` : "only adds one item to the navigation menu"
+- `-M` `--model` : "only create the model based on the table"
+- `-C` `--controller` : "only create controller based on table"
+- `-R` `--request` : "only create request based on table"
+- `-NV` `--noviews` : "create a model, controller, request and routes"
+- `-VW` `--views` : "only create a views based on table"
+- `-L` `--lang=en` : "create files to be translated"
+- `-CM` `--components` : "copy necessary components"
+- `-NAV` `--navigation` : "only adds one item to the navigation menu"
 
 ## License
 Laravel Breeze is open-sourced software licensed under the [GNU v3 license](LICENSE.md).
