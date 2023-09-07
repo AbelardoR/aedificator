@@ -1,0 +1,45 @@
+<x-app-layout>
+    <x-slot name="bread">
+        <x-aed.breadcrumb :current="request()->routeIs('$MODEL_NAME_LOWER_PLURAL$.edit')" home="dashboard"
+            :parents="[__('models.$MODEL_NAME_LOWER_PLURAL$.singular') => route('$MODEL_NAME_LOWER_PLURAL$.index')]">
+            @lang('crud.edit')
+        </x-aed.breadcrumb >
+    </x-slot>
+
+    <x-slot name="header">
+        <div class="app-header">
+            <h2 class="title"><span>@lang('models.$MODEL_NAME_LOWER_PLURAL$.singular')</span></h2>
+        </div>
+        <!-- Validation Errors -->
+        <x-aed.errors :errors="$errors" />
+    </x-slot>
+
+    <div class="app-page block-note">
+        <div class="app-btn-group" role="group">
+            <x-aed.button-link href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.index') }}">
+                @lang('crud.back')
+            </x-aed.button-link>
+        </div>
+
+        <div class="block-papersheet">
+
+            <form method="POST" action="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.update', $modelQuery ) }}">
+                @csrf @method('PATCH')
+
+                @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
+
+                <div class="app-btn-group go-fixed">
+                    <x-aed.button-submit">
+                        @lang('crud.save')
+                    </x-aed.button-submit>
+                    <x-aed.button-cancel :href="route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.index')" >
+                        @lang('crud.cancel')
+                    </x-aed.button-cancel>
+                </div>
+
+            </form>
+
+        </div>
+        <div class="app-clear-fix"></div>
+    </div>
+</x-app-layout>

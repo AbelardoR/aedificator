@@ -1,0 +1,44 @@
+{
+    "name": "veainge/aedificator",
+    "description": "build resources from database tables",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Veainge\\Aedificator\\": "src/"
+        },
+        "classmap": [
+            "src/AedificatorServiceProvider"
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.x-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Veainge\\Aedificator\\AedificatorServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "authors": [
+        {
+            "name": "Abelardo Recalde",
+            "email": "j26a90@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.2.0",
+        "guzzlehttp/guzzle": "^7.0.1",
+        "ext-exif": "*",
+        "ext-fileinfo": "*",
+        "illuminate/console": "^10.17",
+        "illuminate/filesystem": "^10.17",
+        "illuminate/support": "^10.17",
+        "illuminate/validation": "^10.17"
+    }
+}

@@ -1,0 +1,37 @@
+<div class="app-table-box">
+    <table class="app-table" id="$MODEL_NAME_LOWER_PLURAL$-table">
+        <thead>
+        <tr>
+            $FIELDS_HEADERS$
+            <th>@lang('crud.action')</th>
+        </tr>
+        </thead>
+        <tbody>
+         @foreach($$MODEL_QUERY$ as $item)
+            <tr>
+                $FIELDS_BODY$
+
+                <td width="120">
+                    <div class="app-btn-group" role="group">
+                        <form method="POST" action="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.destroy', $item) }}" id="form-delete-{{ $item->id }}">
+                            @csrf @method('DELETE')
+                        </form>
+
+                        <x-aed.button-link href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.show', $item) }}">
+                            @lang('crud.icon.show')
+                        </x-aed.button-link>
+
+                        <x-aed.button-link href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.edit', $item) }}">
+                            @lang('crud.icon.edit')
+                        </x-aed.button-link>
+
+                        <x-aed.button-delete form="form-delete-{{ $item->id }}">
+                            @lang('crud.icon.edit')
+                        </x-aed.button-delete>
+                    </div>
+                </td>
+            </tr>
+         @endforeach
+        </tbody>
+    </table>
+</div>

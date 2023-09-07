@@ -1,0 +1,15 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="col-sm-6">
+    {!! Form::label('$FIELD_NAME_LOWER$', __('models/$MODEL_NAME_PLURAL_CAMEL$.fields.$FIELD_NAME_LOWER$').':') !!}
+    {!! Form::text('$FIELD_NAME_LOWER$', null, ['class' => 'form-control date-control']) !!}
+</div>
+
+@push('page-js')
+    <script type="text/javascript">
+        $('.date-control').datetimepicker({
+            format: 'YYYY-MM-DD HH:mm:ss',
+            useCurrent: true,
+            sideBySide: true
+        })
+    </script>
+@endpush

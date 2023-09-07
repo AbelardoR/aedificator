@@ -1,0 +1,156 @@
+<?php
+
+namespace $CONTROLLER_SPACENAME$\$FOLDER_STUDLY$;
+
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Session;
+use App\Http\Controllers\Controller;
+
+use $MODEL_SPACENAME$\$FOLDER_STUDLY$\$MODEL_NAME_STUDLY_SINGULAR$;
+use $REQUEST_SPACENAME$\$FOLDER_STUDLY$\$STORE_STRING$$REQUEST_NAME_STUDLY_SINGULAR$;
+use $REQUEST_SPACENAME$\$FOLDER_STUDLY$\$UPDATE_STRING$$REQUEST_NAME_STUDLY_SINGULAR$;
+
+class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
+{
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $$MODEL_QUERY$ = $MODEL_NAME_LOWER_SINGULAR$::all();
+        $params = [
+            '$MODEL_QUERY$' => $$MODEL_QUERY$,
+        ];
+        return view('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.index')->with($params);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $params = [
+            '$MODEL_QUERY$' => null,
+        ];
+        return view('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.create')->with($params);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param $MODEL_SPACENAME$\$FOLDER_STUDLY$\$STORE_STRING$$REQUEST_NAME_STUDLY_SINGULAR$ $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store($STORE_STRING$$REQUEST_NAME_STUDLY_SINGULAR$ $request)
+    {
+        $input = $request->all();
+
+        $create =  $MODEL_NAME_LOWER_SINGULAR$::create($input);
+
+        $session = [
+            'status' => 'success',
+            'msg'    => __('messages.saved', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+        ];
+
+        return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param $MODEL_SPACENAME$\$FOLDER_STUDLY$\$MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_STUDLY_SINGULAR$
+     * @return \Illuminate\Http\Response
+     */
+    public function show($MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_LOWER_SINGULAR$)
+    {
+        if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
+            $session = [
+                'status' => 'error',
+                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+            ];
+            return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
+        }
+        $params = [
+            '$MODEL_QUERY$' => $$MODEL_NAME_LOWER_SINGULAR$,
+        ];
+        return view('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.show')->with($params);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param $MODEL_SPACENAME$\$FOLDER_STUDLY$\$MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_LOWER_SINGULAR$
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_LOWER_SINGULAR$)
+    {
+        if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
+            $session = [
+                'status' => 'error',
+                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+            ];
+            return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
+        }
+        $params = [
+            '$MODEL_QUERY$' => $$MODEL_NAME_LOWER_SINGULAR$,
+        ];
+        return view('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.edit')->with($params);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param $MODEL_SPACENAME$\$FOLDER_STUDLY$\$UPDATE_STRING$$REQUEST_NAME_STUDLY_SINGULAR$ $request
+     * @param $MODEL_SPACENAME$\$FOLDER_STUDLY$\$MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_LOWER_SINGULAR$
+     * @return \Illuminate\Http\Response
+     */
+    public function update($UPDATE_STRING$$REQUEST_NAME_STUDLY_SINGULAR$ $request, $MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_LOWER_SINGULAR$)
+    {
+        if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
+            $session = [
+                'status' => 'error',
+                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+            ];
+            return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
+        }
+        $input = $request->all();
+        $update =  $$$MODEL_NAME_LOWER_SINGULAR$->update($input);
+
+        $session = [
+            'status' => 'success',
+            'msg'    => __('messages.updated', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+        ];
+
+        return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  $MODEL_SPACENAME$\$FOLDER_STUDLY$\$MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_LOWER_SINGULAR$
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($MODEL_NAME_STUDLY_SINGULAR$ $$MODEL_NAME_LOWER_SINGULAR$)
+    {
+        if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
+            $session = [
+                'status' => 'error',
+                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+            ];
+            return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
+        }
+        $$MODEL_NAME_LOWER_SINGULAR$->delete();
+
+        $session = [
+            'status' => 'success',
+            'msg'    => __('messages.deleted', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+        ];
+
+        return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
+    }
+}

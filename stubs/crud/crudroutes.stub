@@ -1,0 +1,2 @@
+//$MODEL_NAME_LOWER_PLURAL$
+Route::resource('$MODEL_NAME_LOWER_PLURAL$', \App\Http\Controllers\$PATH_PREFIX_UCFIRST$\$MODEL_NAME_STUDLY_SINGULAR$Controller::class);

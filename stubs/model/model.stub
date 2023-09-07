@@ -1,0 +1,55 @@
+<?php
+
+namespace $MODEL_SPACENAME$\$FOLDER_STUDLY$;
+
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+/**
+ * Class $MODEL_NAME_STUDLY_SINGULAR$
+ * @package App\Models
+ * @version $DATE_SCAFFOLD$
+ */
+
+class $MODEL_NAME_STUDLY_SINGULAR$ extends Model
+{
+    use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = $MODEL_COLUMNS_KEYS$;
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = $MODEL_COLUMS_CAST$;
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = $MODEL_COLUMS_RULES$;
+
+    /**
+     * Scope search model.
+     *
+     */
+    public function scopeSearch($query, $term)
+    {
+        $term = "%$term%";
+        $query->where(function ($query) use ($term)
+        {
+            foreach ($this->fillable as $column) {
+                $query->orWhere($column, 'like', $term);
+            }
+            $query->orWhere('created_at', 'like', $term);
+        });
+    }
+}

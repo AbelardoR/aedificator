@@ -1,0 +1,28 @@
+<x-app-layout>
+    <x-slot name="bread">
+        <x-aed.breadcrumb :current="request()->routeIs('$MODEL_NAME_LOWER_PLURAL$.index')" home="dashboard">
+             @lang('models.$MODEL_NAME_LOWER_PLURAL$.plural')
+        </x-aed.breadcrumb >
+    </x-slot>
+
+    <x-slot name="header">
+        <div class="app-header">
+            <h2 class="title"><span>@lang('models.$MODEL_NAME_LOWER_PLURAL$.plural')</span></h2>
+        </div>
+        <!-- Session Status -->
+        <x-aed.session :status="session('status')">{{ session('msg') }}</x-aed.session>
+    </x-slot>
+
+    <div class="block-note container">
+        <div class="app-btn-group" role="group">
+            <x-aed.button-link href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.create') }}">
+                @lang('crud.create')
+            </x-aed.button-link>
+        </div>
+
+        <div class="block-papersheet">
+            @include('$VIEW_FOLDER_LOWER$.$MODEL_NAME_PLURAL_SNAKE$.table')
+        </div>
+        <div class="app-clear-fix"></div>
+    </div>
+</x-app-layout>
