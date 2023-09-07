@@ -36,8 +36,6 @@
             "email": "j26a90@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "require": {
         "php": ">=7.2.0",
         "guzzlehttp/guzzle": "^7.0.1",
