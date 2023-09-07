@@ -2,6 +2,7 @@
     "name": "veainge/aedificator",
     "description": "build resources from database tables",
     "type": "project",
+    "license": "GNU3",
     "autoload": {
         "psr-4": {
             "Veainge\\Aedificator\\": "src/"
