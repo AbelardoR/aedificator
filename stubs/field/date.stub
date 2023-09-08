@@ -1,15 +1,5 @@
 <!-- $FIELD_NAME_TITLE$ Field -->
-<div class="col-sm-6">
-    <x-label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_PLURAL_CAMEL$.fields.$FIELD_NAME_LOWER$')" />
-    <x-input type="text" name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$" :value="old('$FIELD_NAME_LOWER$', $$MODEL_QUERY$)" class="$MODEL_NAME_PLURAL_CAMEL$-$FIELD_NAME_LOWER$" />
+<div class="item">
+    <x-aed.label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_LOWER_PLURAL$.fields.$FIELD_NAME_LOWER$')" />
+    <x-aed.date type="date" name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$" :value="old('$FIELD_NAME_LOWER$', $$MODEL_QUERY$)" class="$MODEL_NAME_LOWER_PLURAL$-$FIELD_NAME_LOWER$" />
 </div>
-
-@push('page-js')
-    <script type="text/javascript">
-        $('.$MODEL_NAME_PLURAL_CAMEL$-$FIELD_NAME_LOWER$').datetimepicker({
-            format: 'Y-m-d H:m:s',
-            useCurrent: true,
-            sideBySide: true,
-        })
-    </script>
-@endpush

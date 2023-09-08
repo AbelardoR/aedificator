@@ -1,7 +1,7 @@
 <!-- $FIELD_NAME_TITLE$ Field -->
-<div class="form-group col-sm-6">
-    <x-label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_PLURAL_CAMEL$.fields.$FIELD_NAME_LOWER$')" />
-    <x-select name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$">
-    <option value=""></option>
-    </x-select>
+<div class="item">
+    <x-aed.label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_LOWER_PLURAL$.fields.$FIELD_NAME_LOWER$')" />
+    <x-aed.select name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$">
+        <option value=""></option>
+    </x-aed.select>
 </div>

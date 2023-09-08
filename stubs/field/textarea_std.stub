@@ -1,5 +1,0 @@
-<!-- $FIELD_NAME_TITLE$ Field -->
-<div class="col-md-12">
-    {!! Form::label('$FIELD_NAME_LOWER$', __('models/$MODEL_NAME_PLURAL_CAMEL$.fields.$FIELD_NAME_LOWER$').':') !!}
-    {!! Form::textarea('$FIELD_NAME_LOWER$', null, ['class' => 'form-control', 'row' => 3, 'maxlength' => $SIZE$]) !!}
-</div>

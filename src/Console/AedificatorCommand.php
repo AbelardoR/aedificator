@@ -156,7 +156,7 @@ class AedificatorCommand extends Command
         }
         if ($this->option('components')) {
             $this->command_checker = 'components';
-            $this->copyComponents();
+            $this->copyComponents(true);
         }
         if ($this->option('navigation')) {
             $this->command_checker = 'navigation';
@@ -256,9 +256,18 @@ class AedificatorCommand extends Command
      * The called `copyComponents()`. It is responsible for copying
      * necessary components from one this src to project components folder.
      */
-    public function copyComponents() {
+    public function copyComponents($restore = false) {
         $des_path = resource_path('views/components/aed');
         $s_path = __DIR__.'/../components/aed';
+        if ($restore && File::isDirectory($s_path)) {
+            $replacing = $this->ask('Do you want to replace components ? yes(y) / not (n)', 'n');
+            $replacing = Str::lower($replacing);
+            if ($replacing == 'y' || $replacing == 'yes' ) {
+                File::cleanDirectory($des_path);
+            }
+            $this->info('rewriting components');
+
+        }
         if (File::isEmptyDirectory($des_path) && File::isWritable($des_path)) {
             if (File::isDirectory($s_path)) {
                 $this->info('copying the necessary components');
@@ -388,9 +397,9 @@ class AedificatorCommand extends Command
        $result = $this->getSourceFilePath($path, $this->modelNameS, 'php');
        if (!File::exists($result)) {
             File::put($result, $params);
-            $this->info("File : {$this->modelNameS} created");
+            $this->info("File : {$this->modelNameS} model created");
        } else {
-            $this->warn("File : {$this->modelNameS} already exits");
+            $this->warn("File : {$this->modelNameS} model already exits");
             $replace = $this->replacement([$result, $params]);
        }
        $this->buildModelElem($this->getFieldsOfTable(), $result);
@@ -434,7 +443,7 @@ class AedificatorCommand extends Command
                 File::put($pathFile, $params);
                 $this->info("File : {$file} created");
             } else {
-                $this->info("File : {$file} already exits");
+                $this->warn("File : {$file} already exits");
                 $this->replacement([$pathFile, $params]);
             }
         }
@@ -786,6 +795,7 @@ class AedificatorCommand extends Command
 
         $params =  [
             'FILES'                          => '',
+            'FIELDS'                         => '',
             'FOLDER_LOWER'                   => Str::lower($this->folderName),
             'FOLDER_STUDLY'                  => Str::studly($this->folderName),
             'MODEL_QUERY'                    => 'craft',
@@ -826,7 +836,7 @@ class AedificatorCommand extends Command
             'FIELD_NAME_TITLE'          => Str::title($input),
             'FIELD_NAME_LOWER'          => Str::lower($input),
             'MODEL_NAME_LOWER_PLURAL'   => Str::lower($this->modelName),
-            'MODEL_QUERY'               => 'modelQuery',
+            'MODEL_QUERY'               => 'craft',
             'SIZE'                      => $length,
             'CHECKBOX_VALUE'            => '1',
             'INPUT_ARRAY'               => '',

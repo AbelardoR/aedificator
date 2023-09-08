@@ -26,10 +26,10 @@
             <form method="POST" action="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.update', $modelQuery ) }}">
                 @csrf @method('PATCH')
 
-                @include('$VIEW_PREFIX$$MODEL_NAME_PLURAL_SNAKE$.fields')
+                @include('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.fields')
 
                 <div class="app-btn-group go-fixed">
-                    <x-aed.button-submit">
+                    <x-aed.button-submit>
                         @lang('crud.save')
                     </x-aed.button-submit>
                     <x-aed.button-cancel :href="route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.index')" >

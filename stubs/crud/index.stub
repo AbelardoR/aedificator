@@ -13,7 +13,7 @@
         <x-aed.session :status="session('status')">{{ session('msg') }}</x-aed.session>
     </x-slot>
 
-    <div class="block-note container">
+    <div class="app-page block-note">
         <div class="app-btn-group" role="group">
             <x-aed.button-link href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.create') }}">
                 @lang('crud.create')

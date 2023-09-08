@@ -1,5 +1,5 @@
 <!-- $FIELD_NAME_TITLE$ Field -->
 <div class="col-md-12">
-    <x-label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_PLURAL_CAMEL$.fields.$FIELD_NAME_LOWER$')" />
-    <x-textarea name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$" :value="old('$FIELD_NAME_LOWER$', $$MODEL_QUERY$)" rows="3" maxlength="$SIZE$" />
+    <x-aed.label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_LOWER_PLURAL$.fields.$FIELD_NAME_LOWER$')" />
+    <x-aed.textarea name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$" :value="old('$FIELD_NAME_LOWER$', $$MODEL_QUERY$)" rows="3" maxlength="$SIZE$" />
 </div>
