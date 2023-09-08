@@ -55,6 +55,7 @@ class AedificatorCommand extends Command
                             {--R|request : only create request based on table}
                             {--N|noviews : create a model, controller, request}
                             {--W|views : only create a views based on table}
+                            {--file=* : only use with command views (index, create, edit, fields, table, show, show_fields)}
                             {--L|lang=en : create files to be translated}
                             {--K|components : copy necessary components}
                             {--I|navigation : only adds one item to the navigation menu}
@@ -143,8 +144,7 @@ class AedificatorCommand extends Command
         }
         if ($this->option('views')) {
             $this->command_checker = 'views';
-            $this->makeMenu($this->paths['navigations']);
-            $this->makeCrudViews($this->paths['view']);
+            $this->makeCrudViews($this->paths['view'],  array_filter($this->option('file'), 'strlen'));
         }
         if ($this->option('lang')) {
             $this->lang = $this->option('lang');
@@ -181,7 +181,6 @@ class AedificatorCommand extends Command
             $this->makeRoutes($this->paths['routes']);
             $this->copyComponents();
         }
-
     }
 
     /**
@@ -306,9 +305,9 @@ class AedificatorCommand extends Command
      * @param  string  $path
      * @return mixed
      */
-    public function makeCrudViews($path) {
-
+    public function makeCrudViews($path, $getView=[]) {
         $crud = ['index', 'create', 'edit', 'fields', 'table', 'show', 'show_fields'];
+        if (!empty($getView)) { $crud = $getView; }
         $folder = 'crud';
         $this->info('creating views');
         $bar = $this->output->createProgressBar(count($this->paths));
