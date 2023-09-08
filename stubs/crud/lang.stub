@@ -1,0 +1,37 @@
+<?php
+
+return [
+    'add_new'      => 'add new',
+    'create'       => 'create',
+    'cancel'       => 'cancel',
+    'save'         => 'save',
+    'show'         => 'show',
+    'edit'         => 'edit',
+    'detail'       => 'detail',
+    'delete'       => 'delete',
+    'created'      => 'created',
+    'canceled'     => 'canceled',
+    'saved'        => 'saved',
+    'showed'       => 'showed',
+    'edited'       => 'edited',
+    'detailed'     => 'detailed',
+    'deleted'      => 'deleted',
+    'back'         => 'back',
+    'action'       => 'action',
+    'sure'         => 'are you sure?',
+    'yes'          => 'yes',
+    'no'           => 'no',
+    'noresults'    => 'no results found',
+    'print'        => 'print',
+    'default_opt'  => 'select an option',
+    'import'       => 'import',
+    'export'       => 'export',
+    'imported'     => 'imported',
+    'exported'     => 'exported',
+    'icon' => [
+        'table' => '' ,##<i class="fa-solid fa-table"></i>
+        'show' => '' ,##<i class="fa-regular fa-note-sticky"></i>
+        'edit' => '' ,##<i class="fas fa-pen"></i>
+        'delete' => '' ,##<i class="far fa-trash-alt"></i>
+    ],
+];

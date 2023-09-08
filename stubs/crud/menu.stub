@@ -1,5 +1,5 @@
 <x-aed.menu-item :hidden="!Schema::hasTable('$TABLE_NAME_LOWER$')">
-    <x-aed.menu-link :href="route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.index')"
+    <x-aed.menu-link :icon="__('models/$MODEL_NAME_LOWER_PLURAL$.icon')" :href="route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.index')"
     :active="request()->routeIs('*$MODEL_NAME_LOWER_PLURAL$*')">
         @lang('models/$MODEL_NAME_LOWER_PLURAL$.plural')
     </x-aed.menu-link>

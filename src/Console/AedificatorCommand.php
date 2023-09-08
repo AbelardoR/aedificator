@@ -57,7 +57,8 @@ class AedificatorCommand extends Command
                             {--W|views : only create a views based on table}
                             {--L|lang=en : create files to be translated}
                             {--K|components : copy necessary components}
-                            {--I|navigation : only adds one item to the navigation menu}';
+                            {--I|navigation : only adds one item to the navigation menu}
+                            {--T|lang-crud=en : create or restore the crud lang file}';
 
     /**
      * The console command description.
@@ -153,6 +154,15 @@ class AedificatorCommand extends Command
                 $this->makeDirectory($this->paths['lang']);
             }
             $this->makeLocalize($this->paths['lang']);
+        }
+        if ($this->option('lang-crud')) {
+            $this->lang = $this->option('lang-crud');
+            if ($this->lang != 'en') {
+                $this->command_checker = $this->option('lang');
+                $path = $this->getFilePath('lang_path', $this->lang, null);
+                $this->makeDirectory($path);
+                $this->makeLocalizeCrud($path);
+            }
         }
         if ($this->option('components')) {
             $this->command_checker = 'components';
@@ -463,12 +473,25 @@ class AedificatorCommand extends Command
         $pathFile = $this->getSourceFilePath($path, $file, 'php');
         if (!File::exists($pathFile)) {
             File::put($pathFile, $params);
-            $this->info("File : {$pathFile} created");
+            $this->info("Lang File : {$pathFile} created");
         } else {
-            $this->warn("File : {$pathFile} already exits");
+            $this->warn("Lang File : {$pathFile} already exits");
             $this->replacement([$pathFile, $params]);
         }
         $this->buildLocalizeModel($this->getFieldsOfTable(), $pathFile );
+
+    }
+    private function makeLocalizeCrud($path) {
+        $file = 'crud';
+        $params = $this->getSourceFile('lang', 'crud');
+        $result = $this->getSourceFilePath($path, $file, 'php');
+        if (!File::exists($result)) {
+            File::put($result, $params);
+            $this->info("Lang File : {$file} created");
+        } else {
+            $this->warn("Lang File : {$file} already exits");
+            $this->replacement([$result, $params]);
+        }
     }
 
     public function replacement(array $fileReplace) {

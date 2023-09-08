@@ -5,4 +5,5 @@ return array (
   'plural'   => '$MODEL_NAME_LOWER_PLURAL$',
   'genitive' => '$MODEL_NAME_LOWER_SINGULAR$',
   'fields'   => $FIELDS_ARRAY$,
+  'icon'     => '',
 );

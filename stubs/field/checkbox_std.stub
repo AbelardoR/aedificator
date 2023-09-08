@@ -1,0 +1,8 @@
+<!-- $FIELD_NAME_TITLE$ Field -->
+<div class="col-sm-6">
+    <div class="form-check">
+        {!! Form::hidden('$FIELD_NAME_LOWER$', 0, ['class' => 'form-check-input']) !!}
+        {!! Form::checkbox('$FIELD_NAME_LOWER$', '$CHECKBOX_VALUE$', null, ['class' => 'form-check-input']) !!}
+        {!! Form::label('$FIELD_NAME_LOWER$', __('models/$MODEL_NAME_PLURAL_CAMEL$.fields.$FIELD_NAME_LOWER$').':', ['class' => 'form-check-label'])  !!}
+    </div>
+</div>

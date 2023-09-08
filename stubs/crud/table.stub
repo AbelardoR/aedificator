@@ -1,4 +1,5 @@
 <div class="app-table-box">
+    <div class="app-box-header"> @lang('crud.icon.table') </div>
     <table class="app-table" id="$MODEL_NAME_LOWER_PLURAL$-table">
         <thead>
         <tr>
@@ -26,7 +27,7 @@
                         </x-aed.button-link>
 
                         <x-aed.button-delete form="form-delete-{{ $item->id }}">
-                            @lang('crud.icon.edit')
+                            @lang('crud.icon.delete')
                         </x-aed.button-delete>
                     </div>
                 </td>
