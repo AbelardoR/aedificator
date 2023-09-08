@@ -1,8 +1,8 @@
 <?php
 
 return array (
-  'singular' => '$MODEL_NAME_SINGULAR_LOWER$',
-  'plural'   => '$MODEL_NAME_PLURAL_LOWER$',
-  'genitive' => '$MODEL_NAME_SINGULAR_LOWER$',
+  'singular' => '$MODEL_NAME_LOWER_SINGULAR$',
+  'plural'   => '$MODEL_NAME_LOWER_PLURAL$',
+  'genitive' => '$MODEL_NAME_LOWER_SINGULAR$',
   'fields'   => $FIELDS_ARRAY$,
 );

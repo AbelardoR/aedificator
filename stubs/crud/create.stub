@@ -1,14 +1,14 @@
 <x-app-layout>
     <x-slot name="bread">
         <x-aed.breadcrumb :current="request()->routeIs('$MODEL_NAME_LOWER_PLURAL$.create')" home="dashboard"
-            :parents="[__('models.$MODEL_NAME_LOWER_PLURAL$.singular') => route('$MODEL_NAME_LOWER_PLURAL$.index')]">
+            :parents="[__('models/$MODEL_NAME_LOWER_PLURAL$.singular') => route('$MODEL_NAME_LOWER_PLURAL$.index')]">
             @lang('crud.create')
         </x-aed.breadcrumb >
     </x-slot>
 
     <x-slot name="header">
         <div class="app-header">
-            <h2 class="title"><span>@lang('models.$MODEL_NAME_LOWER_PLURAL$.singular')</span></h2>
+            <h2 class="title"><span>@lang('models/$MODEL_NAME_LOWER_PLURAL$.singular')</span></h2>
         </div>
         <!-- Validation Errors -->
         <x-aed.errors :errors="$errors" />

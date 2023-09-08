@@ -54,7 +54,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
 
         $session = [
             'status' => 'success',
-            'msg'    => __('messages.saved', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+            'msg'    => __('messages.saved', ['model' => __('models/$MODEL_NAME_LOWER_PLURAL$.singular')]),
         ];
 
         return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
@@ -71,7 +71,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
         if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
             $session = [
                 'status' => 'error',
-                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+                'msg'    => __('messages.not_found', ['model' => __('models/$MODEL_NAME_LOWER_PLURAL$.singular')]),
             ];
             return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
         }
@@ -92,7 +92,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
         if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
             $session = [
                 'status' => 'error',
-                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+                'msg'    => __('messages.not_found', ['model' => __('models/$MODEL_NAME_LOWER_PLURAL$.singular')]),
             ];
             return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
         }
@@ -114,7 +114,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
         if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
             $session = [
                 'status' => 'error',
-                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+                'msg'    => __('messages.not_found', ['model' => __('models/$MODEL_NAME_LOWER_PLURAL$.singular')]),
             ];
             return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
         }
@@ -123,7 +123,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
 
         $session = [
             'status' => 'success',
-            'msg'    => __('messages.updated', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+            'msg'    => __('messages.updated', ['model' => __('models/$MODEL_NAME_LOWER_PLURAL$.singular')]),
         ];
 
         return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
@@ -140,7 +140,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
         if (empty($$MODEL_NAME_LOWER_SINGULAR$)) {
             $session = [
                 'status' => 'error',
-                'msg'    => __('messages.not_found', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+                'msg'    => __('messages.not_found', ['model' => __('models/$MODEL_NAME_LOWER_PLURAL$.singular')]),
             ];
             return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
         }
@@ -148,7 +148,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
 
         $session = [
             'status' => 'success',
-            'msg'    => __('messages.deleted', ['model' => __('models.$MODEL_NAME_LOWER_PLURAL$.singular')]),
+            'msg'    => __('messages.deleted', ['model' => __('models/$MODEL_NAME_LOWER_PLURAL$.singular')]),
         ];
 
         return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);

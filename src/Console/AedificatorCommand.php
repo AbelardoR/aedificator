@@ -40,6 +40,7 @@ class AedificatorCommand extends Command
     public $ns; //Namespace for model
     public array $paths;
     public $lang = 'en';
+    public $command_checker = null;
 
     /**
      * The name and signature of the console command.
@@ -52,11 +53,11 @@ class AedificatorCommand extends Command
                             {--M|model : only create the model based on the table}
                             {--C|controller : only create controller based on table}
                             {--R|request : only create request based on table}
-                            {--NV|noviews : create a model, controller, request}
-                            {--VW|views : only create a views based on table}
+                            {--N|noviews : create a model, controller, request}
+                            {--W|views : only create a views based on table}
                             {--L|lang=en : create files to be translated}
-                            {--CM|components : copy necessary components}
-                            {--NAV|navigation : only adds one item to the navigation menu}';
+                            {--K|components : copy necessary components}
+                            {--I|navigation : only adds one item to the navigation menu}';
 
     /**
      * The console command description.
@@ -75,47 +76,8 @@ class AedificatorCommand extends Command
         $this->init();
         $this->info('forge in progress from table '.$this->tableName);
         $this->buildDirectories();
-        //working $this->copyComponents();
-        switch (true) {
-            case $this->onlyModel():
-                $this->makeModel($this->paths['model']);
-                break;
-            case $this->onlyController():
-                $this->makeController($this->paths['controller']);
-                break;
-            case $this->onlyRequest():
-                $this->makeRequest($this->paths['request']);
-                break;
-            case $this->noViews():
-                $this->makeModel($this->paths['model']);
-                $this->makeController($this->paths['controller']);
-                $this->makeRequest($this->paths['request']);
-                $this->makeRoutes($this->paths['routes']);
-                break;
-            case $this->onlyViews():
-                $this->makeMenu($this->paths['navigations']);
-                $this->makeCrudViews($this->paths['view']);
-                break;
-            case $this->onlyLang():
-                $this->makeLocalize($this->paths['lang']);
-                break;
-            case $this->copyOnlyComponents():
-                $this->copyComponents();
-                break;
-            case $this->onlyNavmenu():
-                $this->makeMenu($this->paths['navigations']);
-                break;
-            default:
-                $this->makeModel($this->paths['model']);
-                $this->makeController($this->paths['controller']);
-                $this->makeRequest($this->paths['request']);
-                $this->makeCrudViews($this->paths['view']);
-                $this->makeMenu($this->paths['navigations']);
-                $this->makeRoutes($this->paths['routes']);
-                $this->makeLocalize($this->paths['lang']);
-                break;
-        }
 
+        $this->CommandOptions();
         $this->info("forge of {$this->modelName} complete ");
     }
     public function init() {
@@ -158,39 +120,58 @@ class AedificatorCommand extends Command
      * @param $tableName
      * @return boolean
      */
-    public function onlyModel()
-    {
-        return $this->option('model');
-    }
+    public function CommandOptions() {
+        if ($this->option('model')) {
+            $this->command_checker = 'model';
+            $this->makeModel($this->paths['model']);
+        }
+        if ($this->option('controller')) {
+            $this->command_checker = 'controller';
+            $this->makeController($this->paths['controller']);
+        }
+        if ($this->option('request')) {
+            $this->command_checker = 'request';
+            $this->makeRequest($this->paths['request']);
+        }
+        if ($this->option('noviews')) {
+            $this->command_checker = 'noviews';
+            $this->makeModel($this->paths['model']);
+            $this->makeController($this->paths['controller']);
+            $this->makeRequest($this->paths['request']);
+            $this->makeRoutes($this->paths['routes']);
+        }
+        if ($this->option('views')) {
+            $this->command_checker = 'views';
+            $this->makeMenu($this->paths['navigations']);
+            $this->makeCrudViews($this->paths['view']);
+        }
+        if ($this->option('lang')) {
+            $this->lang = $this->option('lang');
+            if ($this->lang != 'en') {
+                $this->command_checker = $this->option('lang');
+                $this->paths['lang'] = $this->getFilePath('lang_path', $this->lang, 'models');
+                $this->makeDirectory($this->paths['lang']);
+            }
+            $this->makeLocalize($this->paths['lang']);
+        }
+        if ($this->option('components')) {
+            $this->command_checker = 'components';
+            $this->copyComponents();
+        }
+        if ($this->option('navigation')) {
+            $this->command_checker = 'navigation';
+            $this->makeMenu($this->paths['navigations']);
+        }
+        if ($this->command_checker === null) {
+            $this->makeModel($this->paths['model']);
+            $this->makeController($this->paths['controller']);
+            $this->makeRequest($this->paths['request']);
+            $this->makeCrudViews($this->paths['view']);
+            $this->makeMenu($this->paths['navigations']);
+            $this->makeRoutes($this->paths['routes']);
+            $this->copyComponents();
+        }
 
-    public function onlyController()
-    {
-        return $this->option('controller');
-    }
-
-    public function onlyRequest()
-    {
-        return $this->option('restes');
-    }
-    public function noViews()
-    {
-        return $this->option('noviews');
-    }
-    public function onlyViews()
-    {
-        return $this->option('views');
-    }
-    public function onlyLang()
-    {
-        return $this->option('lang');
-    }
-    public function copyOnlyComponents()
-    {
-        return $this->option('components');
-    }
-    public function onlyNavmenu()
-    {
-        return $this->option('navigation');
     }
 
     /**
@@ -663,7 +644,7 @@ class AedificatorCommand extends Command
         $tableHeader ='';
         foreach($arrayFields as $key => $value){
             $field = htmlspecialchars($key);
-            $tableHeader .= "<th>{!! __('models.".$this->modelName.".fields.".$field."') !!} </th>".$br;
+            $tableHeader .= "<th>{!! __('models/".$this->modelName.".fields.".$field."') !!} </th>".$br;
         }
         $tableHeader .='';
         $contents = str_replace('$FIELDS_HEADERS$', $tableHeader, $contents);
