@@ -20,9 +20,8 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
      */
     public function index()
     {
-        $$MODEL_QUERY$ = $MODEL_NAME_LOWER_SINGULAR$::all();
         $params = [
-            '$MODEL_QUERY$' => $$MODEL_QUERY$,
+            '$MODEL_QUERY$' => $MODEL_NAME_LOWER_SINGULAR$::all(),
         ];
         return view('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.index')->with($params);
     }
@@ -119,7 +118,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
             return redirect(route('$MODEL_NAME_LOWER_PLURAL$.index'))->with($session);
         }
         $input = $request->all();
-        $update =  $$$MODEL_NAME_LOWER_SINGULAR$->update($input);
+        $update =  $$MODEL_NAME_LOWER_SINGULAR$->update($input);
 
         $session = [
             'status' => 'success',

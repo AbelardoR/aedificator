@@ -675,7 +675,7 @@ class AedificatorCommand extends Command
         $tableHeader ='';
         foreach($arrayFields as $key => $value){
             $field = htmlspecialchars($key);
-            $tableHeader .= "<th>{!! __('models/".$this->modelName.".fields.".$field."') !!} </th>".$br;
+            $tableHeader .= "<th>{!! __('models/".Str::lower($this->modelName).".fields.".$field."') !!} </th>".$br;
         }
         $tableHeader .='';
         $contents = str_replace('$FIELDS_HEADERS$', $tableHeader, $contents);

@@ -23,7 +23,9 @@
 
         <div class="block-papersheet">
 
-            <form method="POST" action="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.update', $modelQuery ) }}">
+            <div class="app-box-header"> @lang('crud.edit') </div>
+
+            <form method="POST" action="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.update', $$MODEL_QUERY$ ) }}" class="app-form">
                 @csrf @method('PATCH')
 
                 @include('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.fields')

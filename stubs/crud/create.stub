@@ -23,7 +23,9 @@
 
         <div class="block-papersheet">
 
-            <form method="POST" action="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.store') }}">
+            <div class="app-box-header"> @lang('crud.create') </div>
+
+            <form method="POST" action="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.store') }}" class="app-form">
                 @csrf
 
                 @include('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.fields')

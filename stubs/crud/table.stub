@@ -18,15 +18,15 @@
                             @csrf @method('DELETE')
                         </form>
 
-                        <x-aed.button-link href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.show', $item) }}">
+                        <x-aed.button-link title="{{ __('crud.show') }}" href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.show', $item) }}">
                             @lang('crud.icon.show')
                         </x-aed.button-link>
 
-                        <x-aed.button-link href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.edit', $item) }}">
+                        <x-aed.button-link title="{{ __('crud.edit') }}" href="{{ route('$ROUTE_NAMED_PREFIX$$MODEL_NAME_LOWER_PLURAL$.edit', $item) }}">
                             @lang('crud.icon.edit')
                         </x-aed.button-link>
 
-                        <x-aed.button-delete form="form-delete-{{ $item->id }}">
+                        <x-aed.button-delete title="{{ __('crud.delete') }}" form="form-delete-{{ $item->id }}">
                             @lang('crud.icon.delete')
                         </x-aed.button-delete>
                     </div>

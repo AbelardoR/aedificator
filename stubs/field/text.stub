@@ -1,5 +1,5 @@
 <!-- $FIELD_NAME_TITLE$ Field -->
-<div class="item">
+<div class="app-form-box">
     <x-aed.label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_LOWER_PLURAL$.fields.$FIELD_NAME_LOWER$')" />
     <x-aed.text type="text" name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$" :value="old('$FIELD_NAME_LOWER$', $$MODEL_QUERY$)" maxlength="$SIZE$" />
 </div>

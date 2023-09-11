@@ -20,7 +20,13 @@
         </div>
 
         <div class="block-papersheet">
-            @include('$VIEW_FOLDER_LOWER$.$MODEL_NAME_PLURAL_SNAKE$.show_fields')
+
+            <div class="app-box-header"> @lang('crud.show') </div>
+
+            <div class="group">
+                @include('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.show_fields')
+            </div>
+
         </div>
         <div class="app-clear-fix"></div>
     </div>

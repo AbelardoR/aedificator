@@ -1,5 +1,5 @@
 <!-- $FIELD_NAME_TITLE$ Field -->
-<div class="item">
+<div class="app-form-box">
     <x-aed.checkbox name="$FIELD_NAME_LOWER$" id="$FIELD_NAME_LOWER$" :value="old('$FIELD_NAME_LOWER$', $$MODEL_QUERY$)" />
-    <x-aed.label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_LOWER_PLURAL$.fields.$FIELD_NAME_LOWER$')" class="form-check-label" />
+    <x-aed.label for="$FIELD_NAME_LOWER$" :value="__('models/$MODEL_NAME_LOWER_PLURAL$.fields.$FIELD_NAME_LOWER$')" />
 </div>

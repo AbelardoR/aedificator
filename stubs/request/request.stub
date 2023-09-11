@@ -36,6 +36,6 @@ class $REQUEST_PREFIX_STUDLY_SINGULAR$ extends FormRequest
      */
     public function attributes()
     {
-        return Lang::get('models.$MODEL_NAME_LOWER_PLURAL$.fields');
+        return Lang::get('models/$MODEL_NAME_LOWER_PLURAL$.fields');
     }
 }
