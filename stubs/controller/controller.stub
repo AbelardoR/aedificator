@@ -21,7 +21,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
     public function index()
     {
         $params = [
-            '$MODEL_QUERY$' => $MODEL_NAME_LOWER_SINGULAR$::all(),
+            '$MODEL_QUERY$' => $MODEL_NAME_STUDLY_SINGULAR$::all(),
         ];
         return view('$VIEW_FOLDER_LOWER$.$MODEL_NAME_LOWER_PLURAL$.index')->with($params);
     }
@@ -49,7 +49,7 @@ class $CONTROLLER_NAME_STUDLY_SINGULAR$ extends Controller
     {
         $input = $request->all();
 
-        $create =  $MODEL_NAME_LOWER_SINGULAR$::create($input);
+        $create =  $MODEL_NAME_STUDLY_SINGULAR$::create($input);
 
         $session = [
             'status' => 'success',
